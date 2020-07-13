@@ -5,6 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
 api = Api(app) # wrapping our app in an api
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db' # will make and save a db file in current directory
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False # disable event logging
 db = SQLAlchemy(app)
 
 class VideoModel(db.Model):
@@ -18,7 +19,7 @@ class VideoModel(db.Model):
 
 
 ######
-db.create_all() # DELETE THIS OR COMMENT IT OUT AFTER INITITIAL DB CREATION!!!! ONLY ONE TIME SHOULD IT BE RUN OR WILL OVERWRITE DATABASE
+# db.create_all() # DELETE THIS OR COMMENT IT OUT AFTER INITITIAL DB CREATION!!!! ONLY ONE TIME SHOULD IT BE RUN OR WILL OVERWRITE DATABASE
 
 
 
