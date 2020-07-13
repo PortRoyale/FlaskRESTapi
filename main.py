@@ -18,7 +18,7 @@ class VideoModel(db.Model):
 
 
 ######
-# db.create_all() # DELETE THIS OR COMMENT IT OUT AFTER INITITIAL DB CREATION!!!! ONLY ONE TIME SHOULD IT BE RUN OR WILL OVERWRITE DATABASE
+db.create_all() # DELETE THIS OR COMMENT IT OUT AFTER INITITIAL DB CREATION!!!! ONLY ONE TIME SHOULD IT BE RUN OR WILL OVERWRITE DATABASE
 
 
 
@@ -55,7 +55,7 @@ class Video(Resource): # Resource class, we are inheriting
 		args = video_put_args.parse_args()
 		result = VideoModel.query.filter_by(id=video_id).first()
 		if result:
-			abort(409, message=f"Video ID {video_id} in database.")
+			abort(409, message=f"Video ID {video_id} already in database.")
 
 		video = VideoModel(id=video_id, name=args['name'], views=args['views'], likes=args['likes'])
 		db.session.add(video)
@@ -69,7 +69,7 @@ class Video(Resource): # Resource class, we are inheriting
 		if not result:
 			abort(404, message="Video doesn't exist, cannot update.")
 
-		if args['name']:
+		if args['name']: # if NOT none
 			result.name = args['name']
 		if args['views']:
 			result.views = args['views']

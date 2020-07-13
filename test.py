@@ -15,3 +15,7 @@ for i in range(len(data)):
 input()
 response = requests.get(BASE + "video/2") # sending helloworld because we added the resource to server of "helloworld"
 print(response.json()) # need to decode it to readable format
+input()
+
+response = requests.patch(BASE + "video/2", {'likes': 55})
+print(response.json())
