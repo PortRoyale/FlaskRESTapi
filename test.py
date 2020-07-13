@@ -4,9 +4,9 @@ import requests
 BASE = "http://127.0.0.1:5000/"
 
 
-data = [{'likes':10, 'name':'Freedom Show', 'views':990},
-		{"likes":56, "name":"Free Cheese", "views":0},
-		{"likes":6969, "name":"Your mommas tapes", "views":69}]
+data = [{'likes':68032, 'name':'Freedom Show', 'views':210503},
+		{"likes":5643, "name":"Cheddar Cheese", "views":10598},
+		{"likes":4361, "name":"Bears vs Packers", "views":93050}]
 
 for i in range(len(data)):
 	response = requests.put(BASE + "video/" + str(i), data[i])

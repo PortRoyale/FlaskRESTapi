@@ -76,6 +76,7 @@ class Video(Resource): # Resource class, we are inheriting
 		if args['likes']:
 			result.likes = args['likes']
 
+		db.session.add(result)
 		db.session.commit()
 
 		return result
